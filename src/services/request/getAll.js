@@ -11,7 +11,7 @@ export const getMoviesTrend = async (query, page) => {
         });
         return response.data.results;
     } catch (error) {
-        console.error('Error fetching movies:', error);
+        console.error('Error ao carregar filmes:', error);
         throw error;
     }
 };
@@ -27,7 +27,7 @@ export const getSeries = async (query, page) => {
         });
         return response.data.results;
     } catch (error) {
-        console.error('Error fetching series:', error);
+        console.error('Error ao carregar series:', error);
         throw error;
     }
 };
@@ -43,7 +43,7 @@ export const getMovies = async (query, page) => {
         });
         return response.data.results;
     } catch (error) {
-        console.error('Error fetching movies:', error);
+        console.error('Error ao carregar filmes:', error);
         throw error;
     }
 };
@@ -53,7 +53,20 @@ export const getMovieById = async (id) => {
         const response = await ApiTMDB.get(`/movie/${id}`);
         return response.data;
     } catch (error) {
-        console.error('Error fetching movie details:', error);
+        console.error('Erro ao carregar detalhes:', error);
         throw error;
     }
 };
+
+
+export const getMovieTrailer = async (movieId) => {
+    try {
+      const response = await ApiTMDB.get(`/movie/${movieId}/videos`);
+      const trailer = response.data.results.find(video => video.type === 'Trailer' && video.site === 'YouTube');
+  
+      return trailer ? `${import.meta.env.VITE_YOUTUBE_URL}/embed/${trailer.key}` : null;
+    } catch (error) {
+      console.error('Erro ao buscar o trailer:', error);
+      throw error;
+    }
+  };
