@@ -47,8 +47,8 @@ export default {
 
             this.isFetching = true;
             try {
-                const newMovies = await getSeries('action', this.page);
-                this.series = [...this.series, ...newMovies];
+                const newSeries = await getSeries('action', this.page);
+                this.series = [...this.series, ...newSeries];
                 this.page += 1;
             } catch (error) {
                 console.error('Error loading more series:', error);

@@ -30,7 +30,7 @@ const routes = [
         props: true,
     },
     {
-        path: '/favorites',
+        path: '/watchlist',
         name: 'Favorites',
         component: Favorites
     },

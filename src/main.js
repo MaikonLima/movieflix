@@ -9,5 +9,10 @@ import { createPinia } from 'pinia';
 createApp(App)
     .use(router)
     .use(createPinia())
-    .use(Toast)
+    .use(Toast, {
+        position: "bottom-center",
+        timeout: 2000,
+        hideProgressBar: true,
+        showCloseButtonOnHover: true,
+    })
     .mount('#app');

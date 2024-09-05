@@ -1,5 +1,6 @@
 <template>
     <LoadingComponent v-if="isLoading" />
+
     <section v-else class="px-3 md:px-10 pt-24 pb-12">
         <div class="grid grid-cols-12 justify-items-center items-center gap-3">
             <div v-for="movie in movies" :key="movie.id"
@@ -52,7 +53,7 @@ export default {
                 this.movies = [...this.movies, ...newMovies];
                 this.page += 1;
                 console.log(this.page, "aqui");
-                
+
             } catch (error) {
                 console.error('Error loading more movies:', error);
             } finally {
@@ -73,5 +74,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss"></style>
