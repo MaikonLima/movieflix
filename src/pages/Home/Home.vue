@@ -49,7 +49,7 @@ export default {
 
             this.isFetching = true;
             try {
-                const newMovies = await getMoviesTrend('action', this.page);
+                const newMovies = await getMoviesTrend(this.page);
                 this.movies = [...this.movies, ...newMovies];
                 this.page += 1;
                 console.log(this.page, "aqui");
