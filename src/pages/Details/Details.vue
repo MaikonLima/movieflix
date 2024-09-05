@@ -15,23 +15,29 @@
                 <p class="line-clamp-4 text-lg font-bold pt-2">{{ movies.tagline }}</p>
                 <p class="text-sm line-clamp-6">{{ movies.overview }}</p>
                 <div class="flex justify-start space-x-3 text-sm text-white py-5 items-center">
-                    <ButtonComponent title="Trailer" :icon="PlayIcon" bgColor="bg-red-600"
-                        hoverColor="hover:bg-red-500" />
-                    <ButtonComponent :title="isFavorite ? 'Remover' : 'Salvar'" :icon="TrashIcon"
+                    <ButtonComponent title="Trailer" icon="PlayIcon" bgColor="bg-red-600" hoverColor="hover:bg-red-500"
+                        @click="showTrailerModal = true" />
+                    <ButtonComponent :title="isFavorite ? 'Remover' : 'Salvar'" icon="HeartIcon"
                         bgColor="bg-transparent" borderColor="border-white" hoverColor="hover:bg-transparent"
                         @click="toggleFavorite" />
                 </div>
             </div>
         </div>
     </div>
+    <ModalTrailer 
+        v-if="showTrailerModal" 
+        :show="showTrailerModal" 
+        :trailerUrl="trailerUrl"
+        @close="showTrailerModal = false" 
+    />
 </template>
 
 <script>
-import { getMovieById } from '@/services/request/getAll';
+import { getMovieById, getMovieTrailer } from '@/services/request/getAll';
 import { useToast } from "vue-toastification";
 import ButtonComponent from '../../components/Button/ButtonComponent.vue';
-import { PlayIcon, TrashIcon } from '@heroicons/vue/solid';
 import LoadingComponent from '../../components/Loading/LoadingComponent.vue';
+import ModalTrailer from '../../components/Modal/ModalTrailer.vue';
 
 const toast = useToast();
 
@@ -41,19 +47,22 @@ export default {
     },
     components: {
         ButtonComponent,
-        LoadingComponent
+        LoadingComponent,
+        ModalTrailer
     },
     data() {
         return {
             movies: {},
             isLoading: true,
-            isFavorite: false
+            isFavorite: false,
+            showTrailerModal: false,
+            trailerUrl: '',
+            id: this.$route.params.id
         };
     },
     async created() {
-        const id = this.$route.params.id;
         try {
-            this.movies = await getMovieById(id);
+            this.movies = await getMovieById(this.id);
             this.isLoading = false;
             this.checkIfFavorite();
         } catch (error) {
@@ -85,7 +94,25 @@ export default {
         checkIfFavorite() {
             const favorites = JSON.parse(localStorage.getItem('favorites')) || [];
             this.isFavorite = favorites.some(fav => fav.id === this.movies.id);
-        }
-    }
+        },
+        async fetchTrailer() {
+            try {
+                this.trailerUrl = await getMovieTrailer(this.id);
+            } catch (error) {
+                console.error('Erro ao carregar o trailer:', error);
+            }
+        },
+        closeModal() {
+            this.showTrailerModal = false;
+            this.trailerUrl = '';
+        },
+    },
+    watch: {
+        showTrailerModal(newValue) {
+            if (newValue) {
+                this.fetchTrailer();
+            }
+        },
+    },
 }
 </script>

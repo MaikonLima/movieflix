@@ -48,7 +48,7 @@ export default {
 
             this.isFetching = true;
             try {
-                const newMovies = await getMovies(this.page);
+                const newMovies = await getMovies('action', this.page);
                 this.movies = [...this.movies, ...newMovies];
                 this.page += 1;
             } catch (error) {
