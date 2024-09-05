@@ -31,23 +31,6 @@
         </div>
       </div>
       <div class="flex items-center relative gap-2">
-        <div class="relative flex items-center">
-          <div v-if="showSearch" class="relative">
-            <input v-model="searchQuery" @input="searchMovies" type="text" placeholder="Buscar filmes..."
-              class="p-2 border rounded-md bg-white w-48 z-10" />
-          </div>
-          <button @click="toggleSearch" class="text-white flex items-center ml-2">
-            <svg v-if="!showSearch" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M21 21l-4.35-4.35m-1.65-1.65a7.5 7.5 0 1 0-10.6 0 7.5 7.5 0 0 0 10.6 0z" />
-            </svg>
-            <svg v-else xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-              stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
         <img src="@/assets/heart.svg" alt="Favoritos" class="w-6 h-6 md:w-6 md:h-6 lg:w-8 lg:h-8 cursor-pointer ml-4"
           @click="goToFavorites" />
       </div>
@@ -72,17 +55,9 @@ export default {
   data() {
     return {
       menuOpen: false,
-      showSearch: false,
-      searchQuery: '',
     };
   },
   methods: {
-    toggleSearch() {
-      this.showSearch = !this.showSearch;
-    },
-    searchMovies() {
-      console.log('Buscando filmes para:', this.searchQuery);
-    },
     toggleMenu() {
       this.menuOpen = !this.menuOpen;
     },
@@ -90,7 +65,7 @@ export default {
       this.menuOpen = false;
     },
     goToFavorites() {
-      this.$router.push('/favorites');
+      this.$router.push('/watchlist');
     },
   },
 };
