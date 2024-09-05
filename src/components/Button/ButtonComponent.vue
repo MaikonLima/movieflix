@@ -5,7 +5,7 @@
         borderColor,
         hoverColor,
     ]">
-        <component :is="icon" class="h-6 w-6" v-if="icon" />
+        <component :is="icon" class="h-6 w-6 mr-2" v-if="icon" />
         <span>{{ title }}</span>
     </button>
 </template>
