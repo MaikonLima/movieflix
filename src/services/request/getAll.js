@@ -1,10 +1,8 @@
 import { ApiTMDB } from "../api";
 
-const API_KEY = '73fa89d4f5be62640fd7fb9a794d4ba6';
-
 export const getMoviesTrend = async (query, page) => {
     try {
-        const response = await ApiTMDB.get(`/trending/all/day?api_key=${API_KEY}`, {
+        const response = await ApiTMDB.get(`/trending/all/day`, {
             params: {
                 query,
                 sort_by: "popularity.desc",
@@ -20,7 +18,7 @@ export const getMoviesTrend = async (query, page) => {
 
 export const getSeries = async (query, page) => {
     try {
-        const response = await ApiTMDB.get(`/discover/tv?api_key=${API_KEY}`, {
+        const response = await ApiTMDB.get(`/discover/tv`, {
             params: {
                 query,
                 sort_by: "popularity.desc",
@@ -36,7 +34,7 @@ export const getSeries = async (query, page) => {
 
 export const getMovies = async (query, page) => {
     try {
-        const response = await ApiTMDB.get(`/discover/movie?api_key=${API_KEY}`, {
+        const response = await ApiTMDB.get(`/discover/movie`, {
             params: {
                 query,
                 sort_by: "popularity.desc",

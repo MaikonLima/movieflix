@@ -47,7 +47,7 @@ export default {
 
             this.isFetching = true;
             try {
-                const newSeries = await getSeries('action', this.page);
+                const newSeries = await getSeries(this.page);
                 this.series = [...this.series, ...newSeries];
                 this.page += 1;
             } catch (error) {
