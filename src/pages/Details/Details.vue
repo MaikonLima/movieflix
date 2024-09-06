@@ -6,11 +6,11 @@
             <div class="text-white w-12/12 md:w-4/12">
                 <p class="text-3xl font-bold whitespace-normal">{{ movies.title ?? movies.original_name }}</p>
                 <div class="flex space-x-2 pb-2 items-center text-gray-500">
-                    <p class="text-sm text-gray-400">{{ getYearFromDate(movies.release_date) ?? "0" }}</p>
-                    <p class="text-green-500 text-xs rounded-full py-1 px-2">
+                    <p class="text-sm text-gray-400">{{ getYearFromDate(movies.release_date) || getYearFromDate(movies.first_air_date)}}</p>
+                    <p class="text-green-500 text-xs font-bold rounded-full py-1 px-2">
                         {{ movies.vote_average }}</p>
                     <p class="text-sm text-gray-400">|</p>
-                    <p class="text-sm text-gray-400">{{ movies.runtime }} min</p>
+                    <p class="text-sm text-gray-400">{{ movies.runtime ?? 0 }} min</p>
                 </div>
                 <p class="line-clamp-4 text-lg font-bold pt-2">{{ movies.tagline }}</p>
                 <p class="text-sm line-clamp-6">{{ movies.overview }}</p>
