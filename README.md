@@ -21,9 +21,10 @@ Este projeto foi desenvolvido com utilizando as tecnologias mais atuais. O intui
 
 ## ⚙️ Funcionalidades 
 
-- Listagem de Filmes e Séries
-- Listagem de Filmes
-- Listagem de Séries
+- Home - Listagem de Filmes e Séries
+- Filmes - Listagem de Filmes
+- Series - Listagem de Séries
+- Página Detalhes - Detalhes de Filmes/Series
 
 ## ♟️ Variáveis de Ambiente 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
