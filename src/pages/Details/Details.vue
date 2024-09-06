@@ -91,12 +91,12 @@ export default {
                 favorites.push(this.movies);
                 localStorage.setItem('favorites', JSON.stringify(favorites));
                 this.isFavorite = true;
-                toast.success("Filme adicionado aos favoritos!");
+                toast.success("Adicionado aos favoritos!");
             } else {
                 favorites.splice(index, 1);
                 localStorage.setItem('favorites', JSON.stringify(favorites));
                 this.isFavorite = false;
-                toast.success("Filme removido dos favoritos!");
+                toast.success("Removido dos favoritos!");
             }
         },
         checkIfFavorite() {
