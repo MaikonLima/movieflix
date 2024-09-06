@@ -1,11 +1,9 @@
-
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@/pages/Home/Home.vue';
 import Details from '@/pages/Details/Details.vue';
 import Movies from '@/pages/Movies/Movies.vue';
 import Series from '@/pages/Series/Series.vue';
 import Favorites from '@/pages/Favorites/Favorites.vue';
-
 
 const routes = [
     {
@@ -24,7 +22,7 @@ const routes = [
         component: Series,
     },
     {
-        path: '/details/:id',
+        path: '/details/:type/:id',
         name: 'Details',
         component: Details,
         props: true,

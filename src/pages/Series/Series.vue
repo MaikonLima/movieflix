@@ -4,7 +4,7 @@
         <div class="grid grid-cols-12 justify-items-center items-center gap-3">
             <div v-for="movie in series" :key="movie.id"
                 class="group col-span-6 sm:col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-3 transform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-lg">
-                <a :href="`details/${movie.id}`">
+                <a :href="`details/series/${movie.id}`">
                     <div class="relative flex items-center justify-center p-0 md:p-5">
                         <img :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
                             class="opacity-100 group-hover:opacity-50 rounded-lg" />
@@ -51,7 +51,7 @@ export default {
                 this.series = [...this.series, ...newSeries];
                 this.page += 1;
             } catch (error) {
-                console.error('Error loading more series:', error);
+                console.error('Error ao carregar series:', error);
             } finally {
                 this.isFetching = false;
             }

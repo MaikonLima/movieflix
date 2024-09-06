@@ -4,9 +4,10 @@
         :style="`background-image: linear-gradient(to right, black, rgba(0, 0, 0, 0.5)), url(https://image.tmdb.org/t/p/original/${movies.backdrop_path});`">
         <div class="p-5">
             <div class="text-white w-12/12 md:w-4/12">
-                <p class="text-3xl font-bold whitespace-normal">{{ movies.title }}</p>
+                <p class="text-3xl font-bold whitespace-normal">{{ movies.title ?? movies.original_name }}</p>
                 <div class="flex space-x-2 pb-2 items-center text-gray-500">
-                    <p class="text-sm text-gray-400">{{ getYearFromDate(movies.release_date) }}</p>
+                    <p class="text-sm text-gray-400">{{ getYearFromDate(movies.release_date) ?? "0" }}</p>
+                    {{ }}
                     <p class="text-green-500 text-xs rounded-full py-1 px-2">
                         {{ movies.vote_average }}</p>
                     <p class="text-sm text-gray-400">|</p>
@@ -24,16 +25,12 @@
             </div>
         </div>
     </div>
-    <ModalTrailer 
-        v-if="showTrailerModal" 
-        :show="showTrailerModal" 
-        :trailerUrl="trailerUrl"
-        @close="showTrailerModal = false" 
-    />
+    <ModalTrailer v-if="showTrailerModal" :show="showTrailerModal" :trailerUrl="trailerUrl"
+        @close="showTrailerModal = false" />
 </template>
 
 <script>
-import { getMovieById, getMovieTrailer } from '@/services/request/getAll';
+import { getSeriesById, getMovieById, getMovieTrailer } from '@/services/request/getAll';
 import { useToast } from "vue-toastification";
 import ButtonComponent from '../../components/Button/ButtonComponent.vue';
 import LoadingComponent from '../../components/Loading/LoadingComponent.vue';
@@ -57,17 +54,28 @@ export default {
             isFavorite: false,
             showTrailerModal: false,
             trailerUrl: '',
+            movies: null,
             id: this.$route.params.id
         };
     },
     async created() {
         try {
-            this.movies = await getMovieById(this.id);
+            const { type } = this.$route.params;
+            if (type === 'movies' || type === 'movie') {
+                this.movies = await getMovieById(this.id);
+            } else if (type === 'series' || type === 'tv') {
+                this.movies = await getSeriesById(this.id);
+            } else {
+                throw new Error("Tipo desconhecido");
+            }
             this.isLoading = false;
             this.checkIfFavorite();
         } catch (error) {
             toast.error("Erro ao carregar detalhes do filme ou série!");
             this.isLoading = false;
+            setTimeout(() => {
+                this.$router.go(-1);
+            }, 2000)
         }
     },
     methods: {

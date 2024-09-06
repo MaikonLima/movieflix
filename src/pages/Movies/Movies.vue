@@ -4,7 +4,7 @@
         <div class="grid grid-cols-12 justify-items-center items-center gap-3">
             <div v-for="movie in movies" :key="movie.id"
                 class="group col-span-6 sm:col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-3 transform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-lg">
-                <a :href="`details/${movie.id}`">
+                <a :href="`details/movies/${movie.id}`">
                     <div class="relative flex items-center justify-center p-0 md:p-5">
                         <img :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
                             class="opacity-100 group-hover:opacity-50 rounded-lg" />
@@ -37,7 +37,7 @@ export default {
             await this.loadMoreMovies();
             this.isLoading = false;
         } catch (error) {
-            console.error('Error loading movies:', error);
+            console.error('Error ao carregar filmes:', error);
             this.isLoading = false;
         }
         window.addEventListener('scroll', this.handleScroll);
@@ -52,7 +52,7 @@ export default {
                 this.movies = [...this.movies, ...newMovies];
                 this.page += 1;
             } catch (error) {
-                console.error('Error loading more movies:', error);
+                console.error('Error ao carregar filmes:', error);
             } finally {
                 this.isFetching = false;
             }

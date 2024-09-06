@@ -58,6 +58,16 @@ export const getMovieById = async (id) => {
     }
 };
 
+export const getSeriesById = async (id) => {
+    try {
+        const response = await ApiTMDB.get(`/tv/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error('Erro ao carregar detalhes:', error);
+        throw error;
+    }
+};
+
 
 export const getMovieTrailer = async (movieId) => {
     try {

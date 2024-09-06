@@ -16,7 +16,7 @@
                     allowfullscreen></iframe>
             </div>
 
-            <p v-else class="text-center text-gray-500">Trailer não disponível</p>
+            <p v-else class="text-center text-gray-200">Trailer não disponível</p>
         </div>
     </div>
 </template>
