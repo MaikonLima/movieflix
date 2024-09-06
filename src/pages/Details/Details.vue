@@ -7,7 +7,6 @@
                 <p class="text-3xl font-bold whitespace-normal">{{ movies.title ?? movies.original_name }}</p>
                 <div class="flex space-x-2 pb-2 items-center text-gray-500">
                     <p class="text-sm text-gray-400">{{ getYearFromDate(movies.release_date) ?? "0" }}</p>
-                    {{ }}
                     <p class="text-green-500 text-xs rounded-full py-1 px-2">
                         {{ movies.vote_average }}</p>
                     <p class="text-sm text-gray-400">|</p>
@@ -68,6 +67,7 @@ export default {
             } else {
                 throw new Error("Tipo desconhecido");
             }
+            
             this.isLoading = false;
             this.checkIfFavorite();
         } catch (error) {

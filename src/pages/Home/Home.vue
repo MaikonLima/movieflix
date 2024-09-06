@@ -52,8 +52,6 @@ export default {
                 const newMovies = await getMoviesTrend('action', this.page);
                 this.movies = [...this.movies, ...newMovies];
                 this.page += 1;
-                console.log(this.page, "aqui");
-
             } catch (error) {
                 console.error('Erro ao carregar dados.', error);
             } finally {

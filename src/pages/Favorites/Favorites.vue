@@ -9,6 +9,7 @@
         <div v-else class="grid grid-cols-12 justify-items-center items-center gap-3">
             <div v-for="movie in favorites" :key="movie.id"
                 class="group col-span-6 sm:col-span-6 md:col-span-3 lg:col-span-3 xl:col-span-3 transform transition duration-300 ease-in-out hover:bg-gray-800 hover:scale-95 rounded-lg">
+                {{ movie.media_type }}
                 <p @click="removeFromFavorites(movie.id)"
                     class="opacity-100 md:opacity-0 text-red-500 group-hover:opacity-100 absolute right-0 z-20 -mt-2 -mr-2 bg-white rounded-full cursor-pointer transform hover:scale-105">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512"
@@ -18,7 +19,7 @@
                         </path>
                     </svg>
                 </p>
-                <a :href="`details/${movie.id}`">
+                <a :href="getDetailUrl(movie)">
                     <div class="relative flex items-center justify-center p-0 md:p-5">
                         <img :src="`https://image.tmdb.org/t/p/original${movie.poster_path}`"
                             class="opacity-100 group-hover:opacity-50 rounded-lg" />
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import { getSeriesById, getMovieById } from '@/services/request/getAll';
 import { useToast } from "vue-toastification";
 
 const toast = useToast();
@@ -37,10 +39,11 @@ const toast = useToast();
 export default {
     data() {
         return {
-            favorites: []
+            favorites: [],
+            id: null
         };
     },
-    created() {
+    async created() {
         this.loadFavorites();
     },
     methods: {
@@ -56,6 +59,16 @@ export default {
             } catch (error) {
                 console.log(error);
             }
+        },
+        async fetchMovies() {
+            if (this.type) {
+                this.movies = await getMovieById(this.id);
+            } else {
+                this.movies = await getSeriesById(this.id);
+            }
+        },
+        getDetailUrl(movie) {
+            return movie.type ? `details/series/${movie.id}` : `details/movies/${movie.id}`;
         }
     }
 }
