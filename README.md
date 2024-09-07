@@ -1,7 +1,7 @@
 
 # Desafio Técnico - Desenvolvedor Frontend
 
-Este projeto foi desenvolvido com utilizando as tecnologias mais atuais. O intuito do sistema é realizar a listagem de filmes e séries usando a api THEMOVIEDB, na qual é possivel visualizar as imagens principais de posters e visualizar detalhes do filme.
+Este projeto foi desenvolvido utilizando as tecnologias mais atuais. O intuito do sistema é realizar a listagem de filmes e séries usando a api THEMOVIEDB, na qual é possivel visualizar as imagens principais de posters e visualizar detalhes do filme, favoritar filmes ou series e assistir trailers.
 
 ## 📔 Linguagens e libs utilizadas 
 
@@ -25,6 +25,10 @@ Este projeto foi desenvolvido com utilizando as tecnologias mais atuais. O intui
 - Filmes - Listagem de Filmes
 - Series - Listagem de Séries
 - Página Detalhes - Detalhes de Filmes/Series
+        - Assistir Trailer
+        - Favoritar 
+        - Remover Favoritos
+- Página de Favoritos- Listagem de filmes ou séries favoritados a partir da página de detalhes.
 
 ## ♟️ Variáveis de Ambiente 
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
