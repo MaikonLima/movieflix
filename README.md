@@ -5,19 +5,19 @@ Este projeto foi desenvolvido com utilizando as tecnologias mais atuais. O intui
 
 ## 📔 Linguagens e libs utilizadas 
 
-- [![Vuejs](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)](https://vuejs.org/)
+ [![Vuejs](https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D)](https://vuejs.org/)
 
-- [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vitess)](https://vitejs.dev/)
+ [![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vitess)](https://vitejs.dev/)
 
-- [![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios)](https://axios-http.com/ptbr/docs/intro)
+ [![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios)](https://axios-http.com/ptbr/docs/intro)
 
-- [![Javascript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=%23000000)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
+ [![Javascript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=%23000000)](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 
-- [![tailwindcss](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=%23000000)](https://tailwindui.com/)
+ [![tailwindcss](https://img.shields.io/badge/tailwindcss-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=%23000000)](https://tailwindui.com/)
 
-- [![TMDB](https://img.shields.io/badge/themoviedatabase-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=%23000000)](https://www.themoviedb.org/)
+ [![TMDB](https://img.shields.io/badge/themoviedatabase-01B4E4?style=for-the-badge&logo=themoviedatabase&logoColor=%23000000)](https://www.themoviedb.org/)
 
-- [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=for-the-badge)](https://www.docker.com/)
+ [![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white&style=for-the-badge)](https://www.docker.com/)
 
 ## ⚙️ Funcionalidades 
 
